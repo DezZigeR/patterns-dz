@@ -6,35 +6,37 @@ namespace patterns_dz
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Здравствуйте вас приветствует математическая программа \n " +
-                                "пожалуйста введите число.");
+            Console.WriteLine("Здравствуйте, Вас приветствует математическая программа \n" + "пожалуйста введите число.");
 
-            String S = Console.ReadLine();
+            string userString = Console.ReadLine();
 
             
-            if (S == "q" )
-            {
-                return;
-                              
-            }
             
-            int M = Int32.Parse(S);
-
-
-            int c1 = 1; int c2 = 0;
-            int c3 = 0;
-            for (int i = 1; i <= M; i++)
+            while (!Equals(userString.ToLower(), "q"))
             {
-                c1 = c1 * i;
-                c2 = c2 + i;
-                if (i % 2 == 0)
+                bool isNumber = Int32.TryParse(userString, out int userNumber);
+               
+                if (isNumber)
                 {
-                    c3 = i;
+                    int factorialResult = FactorialClass.Factorial(userNumber);
+                    if (factorialResult == -1)
+                        Console.WriteLine("Введенное число слишком велико для вычисления факториала");
+                    else
+                       
+                        Console.WriteLine($"Факториал {userNumber} равен {factorialResult}");
+                        Console.WriteLine($"Сумма от 1 до {userNumber} равна {SumClass.Sum(userNumber)}");
+                        Console.WriteLine($"Максимальное четное число меньше {userNumber} равно {MaxClass.Max(userNumber)}");
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Введенные Вами данные не является числом, повторите ввод или нажмите <Q>!");
+                    userString = Console.ReadLine();
                 }
             }
-            Console.WriteLine($"Факториал равен: {c1} \n Сумма от 1 до N равна: {c2} \n максимальное четное число меньше N равно: {c3}");
-                                    
-            Console.ReadLine();
+
+            Console.Write("Нажмите любую клавишу, чтобы закрыть это окно…");
+            Console.ReadKey();
         }
     }
 
