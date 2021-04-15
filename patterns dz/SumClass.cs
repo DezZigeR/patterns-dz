@@ -1,6 +1,5 @@
 ﻿using System;
 
-
 namespace patterns_dz
 {
     class SumClass
