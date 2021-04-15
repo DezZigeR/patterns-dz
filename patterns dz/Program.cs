@@ -9,9 +9,7 @@ namespace patterns_dz
             Console.WriteLine("Здравствуйте, Вас приветствует математическая программа \n" + "пожалуйста введите число.");
 
             string userString = Console.ReadLine();
-
-            
-            
+                                 
             while (!Equals(userString.ToLower(), "q"))
             {
                 bool isNumber = Int32.TryParse(userString, out int userNumber);
@@ -39,5 +37,4 @@ namespace patterns_dz
             Console.ReadKey();
         }
     }
-
 }
